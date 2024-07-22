@@ -1,0 +1,31 @@
+{
+  "ITEM NAMES": "",
+  "item.servermod.emerald_ball": "Emerald Ball",
+  "item.servermod.blueberry": "Blueberry",
+  "item.servermod.zinc_ingot": "Zinc Ingot",
+  "item.servermod.raw_zinc": "Raw Zinc",
+  "item.servermod.dice": "Dice",
+  "item.servermod.blueberry_seeds": "Blueberry Seeds",
+  "item.servermod.honey_bucket": "Honey Bucket",
+
+  "BLOCK NAMES": "",
+  "block.servermod.zinc_block": "Block of Zinc",
+  "block.servermod.zinc_ore": "Zinc Ore",
+  "block.servermod.deepslate_zinc_ore": "Deepslate Zinc Ore",
+  "block.servermod.netherrack_zinc_ore": "Netherrack Zinc Ore",
+  "block.servermod.end_zinc_ore": "End Zinc Ore",
+  "block.servermod.zinc_lamp": "Zinc Lamp",
+  "block.servermod.blueberry_crop": "Blueberry Crop",
+  "block.servermod.zinc_station": "Zinc Station",
+
+  "ITEM_GROUP NAMES": "",
+  "itemGroup.servertab": "Server Mod",
+
+  "TOOLTIP NAMES": "",
+  "tooltip_shift": "Press SHIFT for more info",
+  "tooltip_dice": "Right click to get a random number!",
+
+  "INTERFACE NAMES": "",
+  "dice_chatMessage": "You rolled the number: ",
+  "interface.servermod.zinc_station": "Zinc Station"
+}

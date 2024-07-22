@@ -1,0 +1,31 @@
+{
+  "ITEM NAMES": "",
+  "item.servermod.emerald_ball": "Smaragd Ball",
+  "item.servermod.blueberry": "Blaubeere",
+  "item.servermod.zinc_ingot": "Zinkbarren",
+  "item.servermod.raw_zinc": "Rohzink",
+  "item.servermod.dice": "Würfel",
+  "item.servermod.blueberry_seeds": "Blaubeersamen",
+  "item.servermod.honey_bucket": "Honigeimer",
+
+  "BLOCK NAMES": "",
+  "block.servermod.zinc_block": "Zinkblock",
+  "block.servermod.zinc_ore": "Zinkerz",
+  "block.servermod.deepslate_zinc_ore": "Tiefenschiefer-Zinkerz",
+  "block.servermod.netherrack_zinc_ore": "Netherzinkerz",
+  "block.servermod.end_zinc_ore": "Endzinkerz",
+  "block.servermod.zinc_lamp": "Zinklampe",
+  "block.servermod.blueberry_crop": "Blaubeerpflanze",
+  "block.servermod.zinc_station": "Zink-Arbeitstisch",
+
+  "ITEM_GROUP NAMES": "",
+  "itemGroup.servertab": "Server Mod",
+
+  "TOOLTIP NAMES": "",
+  "tooltip_shift": "SHIFT drücken, um mehr Infos zu erhalten",
+  "tooltip_dice": "Rechtsklicken, um eine zufällige Zahl zu erhalten!",
+
+  "INTERFACE NAMES": "",
+  "dice_chatMessage": "Du hast gewürfelt: ",
+  "interface.servermod.zinc_station": "Zink-Arbeitstisch"
+}
