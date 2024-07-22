@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Z ",
+    "ZGZ",
+    " Z "
+  ],
+  "key": {
+    "Z": {
+      "item": "servermod:zinc_ingot"
+    },
+    "G": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "result": {
+    "item": "servermod:zinc_lamp"
+  }
+}

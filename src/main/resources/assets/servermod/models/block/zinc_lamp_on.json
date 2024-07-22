@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "servermod:block/zinc_lamp_on"
+  }
+}
