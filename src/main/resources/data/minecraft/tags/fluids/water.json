@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "servermod:honey_fluid",
+    "servermod:honey_flowing"
+  ]
+}
