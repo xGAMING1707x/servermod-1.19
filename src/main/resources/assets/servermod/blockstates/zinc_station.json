@@ -1,0 +1,8 @@
+{
+  "variants": {
+  "facing=north": {"model":  "servermod:block/zinc_station", "y":  180},
+  "facing=east": {"model":  "servermod:block/zinc_station", "y":  270},
+  "facing=south": {"model":  "servermod:block/zinc_station"},
+  "facing=west": {"model":  "servermod:block/zinc_station", "y":  90}
+  }
+}
