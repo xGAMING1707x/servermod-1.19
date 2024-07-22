@@ -1,6 +1,16 @@
 package net.einzinger.servermod;
 
 import com.mojang.logging.LogUtils;
+import net.einzinger.servermod.block.ModBlocks;
+import net.einzinger.servermod.block.entity.ModBlockEntities;
+import net.einzinger.servermod.item.ModItems;
+import net.einzinger.servermod.screen.ModMenuTypes;
+import net.einzinger.servermod.screen.ZincStationScreen;
+import net.einzinger.servermod.world.feature.ModConfiguredFeatures;
+import net.einzinger.servermod.world.feature.ModPlacedFeatures;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -23,6 +33,16 @@ public class ServerMod
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -39,6 +59,7 @@ public class ServerMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+            MenuScreens.register(ModMenuTypes.ZINC_STATION_MENU.get(), ZincStationScreen::new);
         }
     }
 }
