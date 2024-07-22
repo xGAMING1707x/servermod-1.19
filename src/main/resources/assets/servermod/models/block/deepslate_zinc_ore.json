@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "servermod:block/deepslate_zinc_ore"
+  }
+}
