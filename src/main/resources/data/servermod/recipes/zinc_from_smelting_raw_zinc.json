@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "group": "zinc",
+  "ingredient": {
+    "item": "servermod:raw_zinc"
+  },
+  "result": "servermod:zinc_ingot"
+}
