@@ -1,0 +1,14 @@
+{
+  "type": "servermod:zinc_processing",
+  "ingredients": [
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "servermod:zinc_ingot"
+    }
+  ],
+  "output": {
+    "item": "minecraft:iron_shovel"
+  }
+}
