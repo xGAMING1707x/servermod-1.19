@@ -3,8 +3,7 @@ package net.einzinger.servermod.item;
 import net.einzinger.servermod.ServerMod;
 import net.einzinger.servermod.block.ModBlocks;
 import net.einzinger.servermod.item.custom.DiceItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -33,6 +32,13 @@ public class ModItems {
     public static final RegistryObject<Item> DICE = ITEMS.register("dice",
             () -> new DiceItem(new Item.Properties().tab(ModCreativeModeTab.SERVER_TAB).stacksTo(1)));
 
+    public static final RegistryObject<Item> ZINC_CUTTER = ITEMS.register("zinc_cutter",
+            () -> new SwordItem(Tiers.WOOD, 0, 1,
+                    new Item.Properties().stacksTo(1).durability(20)
+                            .tab(ModCreativeModeTab.SERVER_TAB)));
+
+    public static final RegistryObject<Item> test = ITEMS.register("test",
+            () -> new Item(new Item.Properties().durability(10)));
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }
