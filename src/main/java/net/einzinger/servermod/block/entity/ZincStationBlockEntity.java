@@ -1,6 +1,7 @@
 package net.einzinger.servermod.block.entity;
 
 import net.einzinger.servermod.item.ModItems;
+import net.einzinger.servermod.recipe.ZincStationRecipe;
 import net.einzinger.servermod.screen.ZincStationMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,21 +10,29 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
+import java.util.function.Consumer;
+
+import static java.util.logging.Logger.global;
 
 public class ZincStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
@@ -81,7 +90,7 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
+        if(cap == ForgeCapabilities.ITEM_HANDLER){
             return lazyItemHandler.cast();
         }
 
@@ -136,12 +145,27 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
                 inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
             }
 
-            if(canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.ZINC_INGOT.get(), 1))){
-                pEntity.progress++;
-                setChanged(level, pos, state);
+            Optional<ZincStationRecipe> recipe = level.getRecipeManager()
+                    .getRecipeFor(ZincStationRecipe.Type.INSTANCE, inventory, level);
 
-                if(pEntity.progress >= pEntity.maxProgress){
-                    craftItem(pEntity);
+
+            if(canInsertAmountIntoOutputSlot(inventory) && recipe.isPresent() && canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem())){
+                int durability = 1;
+                if(pEntity.itemHandler.getStackInSlot(0).getItem() == (ModItems.ZINC_CUTTER.get())){
+                    ItemStack stack = pEntity.itemHandler.getStackInSlot(0);
+                    int maxDurability = stack.getMaxDamage();
+                    durability = maxDurability - stack.getDamageValue();
+                }
+                if(durability >= 1){
+                    pEntity.progress++;
+                    setChanged(level, pos, state);
+
+                    if(pEntity.progress >= pEntity.maxProgress){
+                        craftItem(pEntity, recipe.get());
+                    }
+                } else {
+                    pEntity.resetProgress();
+                    setChanged(level, pos, state);
                 }
             }
         } else {
@@ -154,7 +178,7 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
         this.progress = 0;
     }
 
-    private static void craftItem(ZincStationBlockEntity pEntity) {
+    private static void craftItem(ZincStationBlockEntity pEntity, ZincStationRecipe recipe) {
         if(hasRecipe(pEntity)){
             /* Initializing the block inventory */
             SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
@@ -162,10 +186,21 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
                 inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
             }
 
-            if(canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.ZINC_INGOT.get(), 1))){
-                pEntity.itemHandler.extractItem(1,1, false);
-                pEntity.itemHandler.setStackInSlot(2, new ItemStack(ModItems.ZINC_INGOT.get(),
-                        pEntity.itemHandler.getStackInSlot(2).getCount() + 1));
+            if(canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, recipe.getResultItem())){
+                pEntity.itemHandler.extractItem(1, 1, false);
+                int itemCount = pEntity.itemHandler.getStackInSlot(2).getCount(); // How many items are there NOW
+
+                pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.getResultItem().getItem(),
+                        itemCount + recipe.getResultItem().getCount()));
+
+                if(pEntity.itemHandler.getStackInSlot(0).getItem() == (ModItems.ZINC_CUTTER.get())){
+                    // used Tool was the zinc cutter
+
+                    pEntity.itemHandler.getStackInSlot(0).setDamageValue(pEntity.itemHandler.getStackInSlot(0).getDamageValue() + 1);
+
+                } else {
+                    pEntity.itemHandler.extractItem(0, 1, false);
+                }
 
                 pEntity.resetProgress();
             }
@@ -173,17 +208,20 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
 
     }
 
-
     private static boolean hasRecipe(ZincStationBlockEntity entity) {
+        Level level = entity.level;
+
         /* Initializing the block inventory */
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++){
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasRawZincInFirstSlot = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.RAW_ZINC.get();
+        Optional<ZincStationRecipe> recipe = level.getRecipeManager()
+                .getRecipeFor(ZincStationRecipe.Type.INSTANCE, inventory, level);
 
-        return hasRawZincInFirstSlot;
+        return recipe.isPresent();
+
 
     }
 
