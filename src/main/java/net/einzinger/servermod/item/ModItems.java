@@ -37,8 +37,6 @@ public class ModItems {
                     new Item.Properties().stacksTo(1).durability(20)
                             .tab(ModCreativeModeTab.SERVER_TAB)));
 
-    public static final RegistryObject<Item> test = ITEMS.register("test",
-            () -> new Item(new Item.Properties().durability(10)));
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }
