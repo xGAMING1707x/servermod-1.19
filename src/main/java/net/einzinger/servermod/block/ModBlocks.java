@@ -2,6 +2,7 @@ package net.einzinger.servermod.block;
 
 import net.einzinger.servermod.ServerMod;
 import net.einzinger.servermod.block.custom.BlueBerryCropBlock;
+import net.einzinger.servermod.block.custom.CupBlock;
 import net.einzinger.servermod.block.custom.ZincLampBlock;
 import net.einzinger.servermod.block.custom.ZincStationBlock;
 import net.einzinger.servermod.item.ModCreativeModeTab;
@@ -67,6 +68,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> ZINC_STATION = registerBlock("zinc_station",
             () -> new ZincStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .noOcclusion()),
+            ModCreativeModeTab.SERVER_TAB);
+
+    public static final RegistryObject<Block> CUP = registerBlock("empty_cup",
+            () -> new CupBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                    .destroyTime(20f)),
             ModCreativeModeTab.SERVER_TAB);
 
 

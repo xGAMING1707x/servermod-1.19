@@ -18,6 +18,7 @@
   "block.servermod.zinc_lamp": "Zinklampe",
   "block.servermod.blueberry_crop": "Blaubeerpflanze",
   "block.servermod.zinc_station": "Zink-Arbeitstisch",
+  "block.servermod.empty_cup": "Leere Tasse",
 
   "ITEM_GROUP NAMES": "",
   "itemGroup.servertab": "Server Mod",

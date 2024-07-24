@@ -18,6 +18,7 @@
   "block.servermod.zinc_lamp": "Zinc Lamp",
   "block.servermod.blueberry_crop": "Blueberry Crop",
   "block.servermod.zinc_station": "Zinc Station",
+  "block.servermod.empty_cup": "Empty Cup",
 
   "ITEM_GROUP NAMES": "",
   "itemGroup.servertab": "Server Mod",
