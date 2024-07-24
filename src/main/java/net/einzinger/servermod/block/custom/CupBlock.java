@@ -21,7 +21,7 @@ public class CupBlock extends Block {
         super(pProperties);
     }
 
-    public static final VoxelShape SHAPE = Block.box(1, 0, 4, 11, 9, 11);
+    public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 9, 12);
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext){
