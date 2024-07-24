@@ -1,0 +1,14 @@
+{
+  "type": "servermod:zinc_processing",
+  "ingredients": [
+    {
+      "item": "servermod:zinc_hammer"
+    },
+    {
+      "item": "servermod:zinc_plate"
+    }
+  ],
+  "output": {
+    "item": "servermod:zinc_dust"
+  }
+}
