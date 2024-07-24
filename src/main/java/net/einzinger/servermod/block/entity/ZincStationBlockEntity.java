@@ -1,5 +1,6 @@
 package net.einzinger.servermod.block.entity;
 
+import net.einzinger.servermod.block.custom.ZincStationBlock;
 import net.einzinger.servermod.item.ModItems;
 import net.einzinger.servermod.recipe.ZincStationRecipe;
 import net.einzinger.servermod.screen.ZincStationMenu;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
@@ -29,10 +31,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
-
-import static java.util.logging.Logger.global;
 
 public class ZincStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
@@ -40,9 +40,31 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
         protected void onContentsChanged(int slot) {
             setChanged();
         }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return switch(slot) {
+
+                case 0 -> stack.getItem() == ModItems.ZINC_CUTTER.get();
+                case 1 -> stack.getItem() != ModItems.ZINC_CUTTER.get();
+                case 2 -> false;
+                default -> super.isItemValid(slot, stack);
+            };
+            //return true;
+        }
     };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+
+    private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
+            Map.of(Direction.DOWN, LazyOptional.of(() -> new WrappedHandler(itemHandler, (i) -> i == 2, (i, s) -> false)),
+                    Direction.NORTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 2,
+                            (index, stack) -> false)),
+                    Direction.SOUTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (i) -> false, (i, s) -> false)),
+                    Direction.EAST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (i) -> false,
+                            (index, stack) -> itemHandler.isItemValid(1, stack))),
+                    Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> false,
+                            (index, stack) -> itemHandler.isItemValid(0, stack))));
 
     protected  final ContainerData data;
     private int progress = 0;
@@ -90,8 +112,25 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
     @NotNull
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ITEM_HANDLER){
-            return lazyItemHandler.cast();
+        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+            if (side == null) {
+                return lazyItemHandler.cast();
+            }
+
+            if (directionWrappedHandlerMap.containsKey(side)) {
+                Direction localDir = this.getBlockState().getValue(ZincStationBlock.FACING);
+
+                if (side == Direction.UP || side == Direction.DOWN) {
+                    return directionWrappedHandlerMap.get(side).cast();
+                }
+
+                return switch (localDir) {
+                    default -> directionWrappedHandlerMap.get(side.getOpposite()).cast();
+                    case EAST -> directionWrappedHandlerMap.get(side.getClockWise()).cast();
+                    case SOUTH -> directionWrappedHandlerMap.get(side).cast();
+                    case WEST -> directionWrappedHandlerMap.get(side.getCounterClockWise()).cast();
+                };
+            }
         }
 
         return super.getCapability(cap, side);
@@ -164,6 +203,7 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
                         craftItem(pEntity, recipe.get());
                     }
                 } else {
+                    pEntity.itemHandler.extractItem(0, 1, false);
                     pEntity.resetProgress();
                     setChanged(level, pos, state);
                 }
