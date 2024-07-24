@@ -31,6 +31,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -41,16 +43,29 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
             setChanged();
         }
 
+
+        private Item[] validTools = new Item[]{
+                ModItems.ZINC_CUTTER.get(),
+                ModItems.ZINC_HAMMER.get(),
+        };
+
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch(slot) {
 
-                case 0 -> stack.getItem() == ModItems.ZINC_CUTTER.get();
-                case 1 -> stack.getItem() != ModItems.ZINC_CUTTER.get();
+                case 0 -> isValidTool(stack.getItem());
+                case 1 -> !isValidTool(stack.getItem());
                 case 2 -> false;
                 default -> super.isItemValid(slot, stack);
             };
             //return true;
+        }
+
+        private boolean isValidTool(Item item){
+            for (int i = 0; i < validTools.length; ++i){
+                if(item == validTools[i]) return true;
+            }
+            return false;
         }
     };
 
