@@ -7,6 +7,7 @@
     "servermod:netherrack_zinc_ore",
     "servermod:end_zinc_ore",
     "servermod:zinc_lamp",
-    "servermod:zinc_station"
+    "servermod:zinc_station",
+    "servermod:coffee_machine"
   ]
 }

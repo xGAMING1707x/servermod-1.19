@@ -15,6 +15,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<ZincStationRecipe>> ZINC_PROCESSING_SERIALIZER =
             SERIALIZERS.register("zinc_processing", () -> ZincStationRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<CoffeeMachineRecipe>> COFFEE_BREWING_SERIALIZER =
+            SERIALIZERS.register("coffee_brewing", () -> CoffeeMachineRecipe.Serializer.INSTANCE);
+
 
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);

@@ -1,0 +1,104 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "servermod:machines/coffee_machine0_texture",
+		"particle": "minecraft:block/gray_concrete"
+	},
+	"elements": [
+		{
+			"from": [6, 10, 5],
+			"to": [10, 12, 7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 9]},
+			"faces": {
+				"north": {"uv": [8, 2, 9, 2.5], "texture": "#0"},
+				"east": {"uv": [3.5, 8, 4, 8.5], "texture": "#0"},
+				"south": {"uv": [3, 7.5, 4, 8], "texture": "#0"},
+				"west": {"uv": [8, 3.5, 8.5, 4], "texture": "#0"},
+				"up": {"uv": [8.5, 3.5, 8, 2.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [3.5, 8, 3, 9], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, 12, 2],
+			"to": [14, 16, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 9]},
+			"faces": {
+				"north": {"uv": [7, 6, 10, 7], "texture": "#0"},
+				"east": {"uv": [7, 7, 9, 8], "texture": "#0"},
+				"south": {"uv": [1, 6.5, 4, 7.5], "texture": "#0"},
+				"west": {"uv": [1, 7.5, 3, 8.5], "texture": "#0"},
+				"up": {"uv": [8, 3, 6, 0], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [8, 3, 6, 6], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"name": "wall",
+			"from": [2, 2, 10],
+			"to": [14, 16, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 9]},
+			"faces": {
+				"north": {"uv": [3, 0, 6, 3.5], "texture": "#0"},
+				"east": {"uv": [6, 6, 7, 9.5], "texture": "#0"},
+				"south": {"uv": [0, 0, 3, 3.5], "texture": "#0"},
+				"west": {"uv": [0, 6.5, 1, 10], "texture": "#0"},
+				"up": {"uv": [5, 9.5, 4, 6.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [6, 6.5, 5, 9.5], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"name": "base",
+			"from": [2, 0, 2],
+			"to": [14, 2, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7.5, 9]},
+			"faces": {
+				"north": {"uv": [8, 1.5, 11, 2], "texture": "#0"},
+				"east": {"uv": [8, 0, 11, 0.5], "texture": "#0"},
+				"south": {"uv": [8, 0.5, 11, 1], "texture": "#0"},
+				"west": {"uv": [8, 1, 11, 1.5], "texture": "#0"},
+				"up": {"uv": [3, 6.5, 0, 3.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [6, 3.5, 3, 6.5], "rotation": 270, "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"ground": {
+			"translation": [0, 0.75, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [21, -157.5, 0],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"head": {
+			"translation": [0, 14.5, 0]
+		},
+		"fixed": {
+			"translation": [0, 0, -3.25]
+		}
+	},
+	"groups": [
+		{
+			"name": "coffemachine_empty",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}

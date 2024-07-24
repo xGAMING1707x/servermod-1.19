@@ -18,6 +18,10 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<ZincStationMenu>> ZINC_STATION_MENU =
             registerMenuType(ZincStationMenu::new, "zinc_station_menu");
 
+    public static final RegistryObject<MenuType<CoffeeMachineMenu>> COFFEE_MACHINE_MENU =
+            registerMenuType(CoffeeMachineMenu::new, "coffee_machine_menu");
+
+
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
                                                                                                   String name){

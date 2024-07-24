@@ -1,0 +1,16 @@
+{
+  "variants": {
+  "facing=north,state=0": {"model":  "servermod:block/coffee_machine0"},
+  "facing=north,state=1": {"model":  "servermod:block/coffee_machine1"},
+  "facing=north,state=2": {"model":  "servermod:block/coffee_machine2"},
+  "facing=east,state=0": {"model":  "servermod:block/coffee_machine0", "y":  90},
+  "facing=east,state=1": {"model":  "servermod:block/coffee_machine1", "y":  90},
+  "facing=east,state=2": {"model":  "servermod:block/coffee_machine2", "y":  90},
+  "facing=south,state=0": {"model":  "servermod:block/coffee_machine0", "y":  180},
+  "facing=south,state=1": {"model":  "servermod:block/coffee_machine1", "y":  180},
+  "facing=south,state=2": {"model":  "servermod:block/coffee_machine2", "y":  180},
+  "facing=west,state=0": {"model":  "servermod:block/coffee_machine0", "y":  270},
+  "facing=west,state=1": {"model":  "servermod:block/coffee_machine1", "y":  270},
+  "facing=west,state=2": {"model":  "servermod:block/coffee_machine2", "y":  270}
+  }
+}

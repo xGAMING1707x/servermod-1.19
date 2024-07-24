@@ -6,6 +6,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.einzinger.servermod.ServerMod;
+import net.einzinger.servermod.recipe.CoffeeMachineRecipe;
 import net.einzinger.servermod.recipe.ZincStationRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -21,6 +22,9 @@ public class JEIServerModPlugin implements IModPlugin {
     public static RecipeType<ZincStationRecipe> PROCESSING_TYPE =
             new RecipeType<>(ZincStationRecipeCategory.UID, ZincStationRecipe.class);
 
+    public static RecipeType<CoffeeMachineRecipe> COFFEE_TYPE =
+            new RecipeType<>(CoffeeMachineRecipeCategory.UID, CoffeeMachineRecipe.class);
+
     @Override
     public ResourceLocation getPluginUid() {
         return new ResourceLocation(ServerMod.MOD_ID, "jei_plugin");
@@ -29,7 +33,8 @@ public class JEIServerModPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new
-                ZincStationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+                ZincStationRecipeCategory(registration.getJeiHelpers().getGuiHelper()), new
+                CoffeeMachineRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -38,5 +43,8 @@ public class JEIServerModPlugin implements IModPlugin {
 
         List<ZincStationRecipe> recipesProcessing = manager.getAllRecipesFor(ZincStationRecipe.Type.INSTANCE);
         registration.addRecipes(PROCESSING_TYPE, recipesProcessing);
+
+        List<CoffeeMachineRecipe> recipesCoffee = manager.getAllRecipesFor(CoffeeMachineRecipe.Type.INSTANCE);
+        registration.addRecipes(COFFEE_TYPE, recipesCoffee);
     }
 }

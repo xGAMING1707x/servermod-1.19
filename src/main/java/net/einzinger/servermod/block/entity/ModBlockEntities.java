@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ZincStationBlockEntity::new,
                             ModBlocks.ZINC_STATION.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<CoffeeMachineBlockEntity>> COFFEE_MACHINE =
+            BLOCK_ENTITIES.register("coffee_machine", () ->
+                    BlockEntityType.Builder.of(CoffeeMachineBlockEntity::new,
+                            ModBlocks.COFFEE_MACHINE.get()).build(null));
+
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
