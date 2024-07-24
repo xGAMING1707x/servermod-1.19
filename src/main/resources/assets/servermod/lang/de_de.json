@@ -6,8 +6,11 @@
   "item.servermod.raw_zinc": "Rohzink",
   "item.servermod.dice": "Würfel",
   "item.servermod.blueberry_seeds": "Blaubeersamen",
+  "item.servermod.coffee_seeds": "Kaffeesamen",
   "item.servermod.honey_bucket": "Honigeimer",
   "item.servermod.zinc_cutter": "Zinkschneider",
+  "item.servermod.zinc_plate": "Zinkplatte",
+  "item.servermod.zinc_dust": "Zinkstaub",
 
   "BLOCK NAMES": "",
   "block.servermod.zinc_block": "Zinkblock",
@@ -17,7 +20,9 @@
   "block.servermod.end_zinc_ore": "Endzinkerz",
   "block.servermod.zinc_lamp": "Zinklampe",
   "block.servermod.blueberry_crop": "Blaubeerpflanze",
+  "block.servermod.coffee_crop": "Kaffeestrauch",
   "block.servermod.zinc_station": "Zink-Arbeitstisch",
+  "block.servermod.coffee_machine": "Kaffee-Maschine",
   "block.servermod.empty_cup": "Leere Tasse",
 
   "ITEM_GROUP NAMES": "",
@@ -29,5 +34,6 @@
 
   "INTERFACE NAMES": "",
   "dice_chatMessage": "Du hast gewürfelt: ",
-  "interface.servermod.zinc_station": "Zink-Arbeitstisch"
+  "interface.servermod.zinc_station": "Zink-Arbeitstisch",
+  "interface.servermod.coffee_machine": "Kaffee-Maschine"
 }

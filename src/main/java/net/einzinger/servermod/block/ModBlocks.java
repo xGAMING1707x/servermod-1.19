@@ -1,10 +1,7 @@
 package net.einzinger.servermod.block;
 
 import net.einzinger.servermod.ServerMod;
-import net.einzinger.servermod.block.custom.BlueBerryCropBlock;
-import net.einzinger.servermod.block.custom.CupBlock;
-import net.einzinger.servermod.block.custom.ZincLampBlock;
-import net.einzinger.servermod.block.custom.ZincStationBlock;
+import net.einzinger.servermod.block.custom.*;
 import net.einzinger.servermod.item.ModCreativeModeTab;
 import net.einzinger.servermod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -75,6 +72,13 @@ public class ModBlocks {
                     .destroyTime(20f)));
     public static final RegistryObject<Item> CUP_ITEM = registerBlockItem("empty_cup", CUP, ModCreativeModeTab.SERVER_TAB, 16);
 
+    public static final RegistryObject<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
+            () -> new CoffeeMachineBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)
+                    .noOcclusion()));
+    public static final RegistryObject<Item> COFFEE_MACHINE_ITEM = registerBlockItem("coffee_machine", COFFEE_MACHINE, ModCreativeModeTab.SERVER_TAB);
+
+    public static final RegistryObject<Block> COFFEE_CROP = BLOCKS.register("coffe_crop",
+            () -> new CoffeeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
 
 

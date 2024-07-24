@@ -6,8 +6,11 @@
   "item.servermod.raw_zinc": "Raw Zinc",
   "item.servermod.dice": "Dice",
   "item.servermod.blueberry_seeds": "Blueberry Seeds",
+  "item.servermod.coffee_seeds": "Blueberry Seeds",
   "item.servermod.honey_bucket": "Honey Bucket",
   "item.servermod.zinc_cutter": "Zinc Cutter",
+  "item.servermod.zinc_plate": "Zinc Plate",
+  "item.servermod.zinc_dust": "Zinc Dust",
 
   "BLOCK NAMES": "",
   "block.servermod.zinc_block": "Block of Zinc",
@@ -17,7 +20,9 @@
   "block.servermod.end_zinc_ore": "End Zinc Ore",
   "block.servermod.zinc_lamp": "Zinc Lamp",
   "block.servermod.blueberry_crop": "Blueberry Crop",
+  "block.servermod.coffee_crop": "Coffee Crop",
   "block.servermod.zinc_station": "Zinc Station",
+  "block.servermod.coffee_machine": "Coffee Machine",
   "block.servermod.empty_cup": "Empty Cup",
 
   "ITEM_GROUP NAMES": "",
@@ -29,5 +34,6 @@
 
   "INTERFACE NAMES": "",
   "dice_chatMessage": "You rolled the number: ",
-  "interface.servermod.zinc_station": "Zinc Station"
+  "interface.servermod.zinc_station": "Zinc Station",
+  "interface.servermod.coffee_machine": "Coffee Machine"
 }

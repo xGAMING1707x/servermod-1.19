@@ -3,6 +3,7 @@ package net.einzinger.servermod.item;
 import net.einzinger.servermod.ServerMod;
 import net.einzinger.servermod.block.ModBlocks;
 import net.einzinger.servermod.item.custom.DiceItem;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -36,6 +37,23 @@ public class ModItems {
             () -> new SwordItem(Tiers.WOOD, 0, 1,
                     new Item.Properties().stacksTo(1).durability(20)
                             .tab(ModCreativeModeTab.SERVER_TAB)));
+
+    public static final RegistryObject<Item> ZINC_HAMMER = ITEMS.register("zinc_hammer",
+            () -> new PickaxeItem(Tiers.STONE, 0, 1,
+                    new Item.Properties().stacksTo(1).durability(20)
+                            .tab(ModCreativeModeTab.SERVER_TAB)));
+
+    public static final RegistryObject<Item> ZINC_PLATE = ITEMS.register("zinc_plate",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.SERVER_TAB)));
+
+    public static final RegistryObject<Item> ZINC_DUST = ITEMS.register("zinc_dust",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.SERVER_TAB)));
+
+    public static final RegistryObject<Item> COFFEE_SEEDS = ITEMS.register("coffee_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.COFFEE_CROP.get(),
+                    new Item.Properties().tab(ModCreativeModeTab.SERVER_TAB)));
+
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
