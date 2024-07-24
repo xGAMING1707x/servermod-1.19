@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.einzinger.servermod.block.ModBlocks;
 import net.einzinger.servermod.block.entity.ModBlockEntities;
 import net.einzinger.servermod.item.ModItems;
+import net.einzinger.servermod.recipe.ModRecipes;
 import net.einzinger.servermod.screen.ModMenuTypes;
 import net.einzinger.servermod.screen.ZincStationScreen;
 import net.einzinger.servermod.world.feature.ModConfiguredFeatures;
@@ -41,6 +42,8 @@ public class ServerMod
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
 
         modEventBus.addListener(this::commonSetup);
