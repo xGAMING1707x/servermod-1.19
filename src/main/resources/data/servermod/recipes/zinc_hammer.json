@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Z ",
+    " SZ",
+    "S  "
+  ],
+  "key": {
+    "Z": {
+      "item": "servermod:zinc_ingot"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "servermod:zinc_hammer"
+  }
+}
