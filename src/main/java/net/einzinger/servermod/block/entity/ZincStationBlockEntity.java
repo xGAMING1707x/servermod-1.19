@@ -44,15 +44,12 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
         }
 
 
-        private Item[] validTools = new Item[]{
-                ModItems.ZINC_CUTTER.get(),
-                ModItems.ZINC_HAMMER.get(),
-        };
+
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch(slot) {
-
+                // Tool ONLY can be inserted in slot 0
                 case 0 -> isValidTool(stack.getItem());
                 case 1 -> !isValidTool(stack.getItem());
                 case 2 -> false;
@@ -61,13 +58,21 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
             //return true;
         }
 
-        private boolean isValidTool(Item item){
-            for (int i = 0; i < validTools.length; ++i){
-                if(item == validTools[i]) return true;
-            }
-            return false;
-        }
+
     };
+
+
+    private Item[] validTools = new Item[]{
+            ModItems.ZINC_CUTTER.get(),
+            ModItems.ZINC_HAMMER.get(),
+    };
+
+    private boolean isValidTool(Item item){
+        for (Item validTool : validTools) {
+            if (item == validTool) return true;
+        }
+        return false;
+    }
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -205,8 +210,10 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
 
             if(canInsertAmountIntoOutputSlot(inventory) && recipe.isPresent() && canInsertItemIntoOutputSlot(inventory, recipe.get().getResultItem())){
                 int durability = 1;
-                if(pEntity.itemHandler.getStackInSlot(0).getItem() == (ModItems.ZINC_CUTTER.get())){
-                    ItemStack stack = pEntity.itemHandler.getStackInSlot(0);
+                ItemStack stack = pEntity.itemHandler.getStackInSlot(0);
+                if(pEntity.isValidTool(stack.getItem())){
+                    // Item in Slot 0 is a valid Tool
+
                     int maxDurability = stack.getMaxDamage();
                     durability = maxDurability - stack.getDamageValue();
                 }
@@ -248,8 +255,8 @@ public class ZincStationBlockEntity extends BlockEntity implements MenuProvider 
                 pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.getResultItem().getItem(),
                         itemCount + recipe.getResultItem().getCount()));
 
-                if(pEntity.itemHandler.getStackInSlot(0).getItem() == (ModItems.ZINC_CUTTER.get())){
-                    // used Tool was the zinc cutter
+                if(pEntity.isValidTool(pEntity.itemHandler.getStackInSlot(0).getItem())){
+                    // used Item in Slot 0 is a valid Tool
 
                     pEntity.itemHandler.getStackInSlot(0).setDamageValue(pEntity.itemHandler.getStackInSlot(0).getDamageValue() + 1);
 
