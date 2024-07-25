@@ -2,13 +2,13 @@
   "type": "servermod:coffee_brewing",
   "ingredients": [
     {
-      "item": "minecraft:dirt"
+      "item": "servermod:coffee_seeds"
     },
     {
       "item": "servermod:empty_cup"
     }
   ],
   "output": {
-    "item": "minecraft:diamond"
+    "item": "servermod:coffee_cup"
   }
 }
