@@ -69,15 +69,20 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CUP = registerBlock("empty_cup",
             () -> new CupBlock(BlockBehaviour.Properties.of(Material.WOOD)
-                    .destroyTime(20f)));
+                    .destroyTime(1f)));
     public static final RegistryObject<Item> CUP_ITEM = registerBlockItem("empty_cup", CUP, ModCreativeModeTab.SERVER_TAB, 16);
+
+    public static final RegistryObject<Block> COFFEE_CUP = registerBlock("coffee_cup",
+            () -> new CoffeeCupBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                    .destroyTime(1f)));
+    public static final RegistryObject<Item> COFFEE_CUP_ITEM = registerBlockItem("coffee_cup", COFFEE_CUP, ModCreativeModeTab.SERVER_TAB, 1);
 
     public static final RegistryObject<Block> COFFEE_MACHINE = registerBlock("coffee_machine",
             () -> new CoffeeMachineBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_CONCRETE)
                     .noOcclusion()));
     public static final RegistryObject<Item> COFFEE_MACHINE_ITEM = registerBlockItem("coffee_machine", COFFEE_MACHINE, ModCreativeModeTab.SERVER_TAB);
 
-    public static final RegistryObject<Block> COFFEE_CROP = BLOCKS.register("coffe_crop",
+    public static final RegistryObject<Block> COFFEE_CROP = BLOCKS.register("coffee_crop",
             () -> new CoffeeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
 
