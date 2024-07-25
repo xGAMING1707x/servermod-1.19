@@ -6,9 +6,10 @@
   "item.servermod.raw_zinc": "Raw Zinc",
   "item.servermod.dice": "Dice",
   "item.servermod.blueberry_seeds": "Blueberry Seeds",
-  "item.servermod.coffee_seeds": "Blueberry Seeds",
+  "item.servermod.coffee_seeds": "Coffee Beans",
   "item.servermod.honey_bucket": "Honey Bucket",
   "item.servermod.zinc_cutter": "Zinc Cutter",
+  "item.servermod.zinc_hammer": "Zinc Hammer",
   "item.servermod.zinc_plate": "Zinc Plate",
   "item.servermod.zinc_dust": "Zinc Dust",
 
@@ -24,6 +25,7 @@
   "block.servermod.zinc_station": "Zinc Station",
   "block.servermod.coffee_machine": "Coffee Machine",
   "block.servermod.empty_cup": "Empty Cup",
+  "block.servermod.coffee_cup": "Cup of Coffee",
 
   "ITEM_GROUP NAMES": "",
   "itemGroup.servertab": "Server Mod",
