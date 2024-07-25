@@ -27,7 +27,7 @@ public class CoffeeCropBlock extends CropBlock {
 
     @Override
     public int getMaxAge() {
-        return 6;
+        return 7;
     }
 
     @Override
